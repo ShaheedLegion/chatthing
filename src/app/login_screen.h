@@ -12,6 +12,7 @@ public:
 
   virtual void addWidgets() override;
   virtual void hideWidgets() override;
+  virtual void handleCallbacks() override;
 };
 }
 #endif // _APP_LOGIN_SCREEN_

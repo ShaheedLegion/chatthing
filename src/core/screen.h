@@ -17,6 +17,7 @@ public:
 
   virtual void addWidgets() = 0;
   virtual void hideWidgets() = 0;
+  virtual void handleCallbacks() = 0;
 };
 }
 #endif // _CORE_SCREEN_

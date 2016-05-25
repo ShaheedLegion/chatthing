@@ -43,7 +43,7 @@ int main() {
   loadWidgets(gui);
 
   states->addScreen(new app::LoginScreen(states, gui));
-  // states->addScreen(new app::GameScreen(states, &window));
+  states->addScreen(new app::ConvoScreen(states, gui));
 
   states->signalNextScreen();
 
@@ -72,8 +72,8 @@ int main() {
       //  states->resized();
     }
 
-    // Update SFGUI with elapsed seconds since last call.
-    // desktop.Update(clock.restart().asSeconds());
+    // Update states with notification that it can poll callbacks.
+    states->handleCallbacks();
 
     // Rendering.
     window.clear();

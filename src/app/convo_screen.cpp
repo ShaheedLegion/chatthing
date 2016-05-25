@@ -10,4 +10,5 @@ ConvoScreen::ConvoScreen(core::ISignalHelper *helper, tgui::Gui &g)
 
 void ConvoScreen::addWidgets() {}
 void ConvoScreen::hideWidgets() {}
+void ConvoScreen::handleCallbacks() {}
 }

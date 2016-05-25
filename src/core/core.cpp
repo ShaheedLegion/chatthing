@@ -46,9 +46,13 @@ void States::signalNextScreen() {
   if (states.empty())
     return;
 
-  if (currentState >= 0 && currentState < states.size())
+  core::print("Moving to next state.");
+  if (currentState >= 0 && currentState < states.size()) {
     states[currentState]->hideWidgets();
+    core::print("Hiding initial state");
+  }
 
+  core::print("incrementing current state.");
   ++currentState;
 
   if (currentState >= 0 && currentState < states.size())
@@ -58,6 +62,14 @@ void States::signalNextScreen() {
     currentState = 0;
     states[currentState]->addWidgets();
   }
+}
+
+void States::handleCallbacks() {
+  if (states.empty())
+    return;
+
+  if (currentState >= 0 && currentState < states.size())
+    states[currentState]->handleCallbacks();
 }
 
 } // namespace core

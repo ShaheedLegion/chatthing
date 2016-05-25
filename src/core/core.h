@@ -4,8 +4,8 @@
 #define CORE_VERSION_MAJOR 1
 #define CORE_VERSION_MINOR 0
 
-#include <SFML/Graphics.hpp>
 #include "core/defs.h"
+#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <map>
 #include <vector>
@@ -50,6 +50,7 @@ public:
   void addScreen(Screen *screen);
 
   virtual void signalNextScreen() override;
+  void handleCallbacks();
 };
 } // namespace core
 
