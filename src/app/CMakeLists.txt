@@ -31,16 +31,20 @@ include("${app_BINARY_DIR}/Sources.cmake")
   #set(MACOSX_BUNDLE_ICON_FILE "icon.icns")
 #endif()
 
-# Executable: poker_app
+# Executable: app
 # ------------------------------------------------------------------------------
+find_package( TGUI 0.6 REQUIRED )
 
+
+# Add SFGUI to our project.
+include_directories( ${TGUI_INCLUDE_DIR} )
 include_directories("include")
 
 if(SFML_PLATFORM STREQUAL "android")
   add_library("app" STATIC ${app_SOURCES})
   target_link_libraries("app" "android" "log" "EGL" "GLESv1_CM")
 else()
-  add_executable("app" WIN32 MACOSX_BUNDLE ${app_SOURCES})
+  add_executable("app" ${app_SOURCES})
   set_target_properties("app" PROPERTIES OUTPUT_NAME "app")
 endif()
 
@@ -57,6 +61,7 @@ target_link_libraries("app"
   "sfml-audio"
 
 )
+target_link_libraries( "app" ${TGUI_LIBRARY} ${SFML_LIBRARIES} )
 
 if(SFML_PLATFORM STREQUAL "android")
   # On Android we set sfml-main as a dependency, but we don't link it to the target.
@@ -107,3 +112,4 @@ if(SFML_PLATFORM STREQUAL "osx")
 endif()
 
 set_property(TARGET "app" PROPERTY FOLDER "Applications")
+

@@ -2,6 +2,7 @@ project("core")
 
 # Dependencies
 # ------------------------------------------------------------------------------
+find_package( TGUI 0.6 REQUIRED )
 
 # GTK
 if(SFML_PLATFORM STREQUAL "linux")
@@ -29,6 +30,8 @@ endif()
 
 # Sources.cmake
 # ------------------------------------------------------------------------------
+# Add SFGUI to our project.
+include_directories( ${TGUI_INCLUDE_DIR} )
 
 set(ANDROID_EXCLUDE "-exclude=android")
 if(SFML_PLATFORM STREQUAL "android")
@@ -55,7 +58,6 @@ include("${core_BINARY_DIR}/Sources.cmake")
 
 # Library: base
 # ------------------------------------------------------------------------------
-
 add_library("core" STATIC ${core_SOURCES})
 set_property(TARGET "core" PROPERTY FOLDER "Libraries")
 

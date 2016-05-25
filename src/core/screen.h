@@ -1,7 +1,7 @@
 #ifndef _CORE_SCREEN_
 #define _CORE_SCREEN_
 
-#include <SFML/Graphics.hpp>
+#include <TGUI/TGUI.hpp>
 
 namespace core {
 
@@ -10,12 +10,13 @@ class ISignalHelper;
 class Screen {
 protected:
   ISignalHelper *helper;
+  tgui::Gui &gui;
 
 public:
-  Screen(ISignalHelper *h) : helper(h) {}
+  Screen(ISignalHelper *h, tgui::Gui &g) : helper(h), gui(g) {}
 
-  virtual void handleKey(sf::Keyboard::Key key) = 0;
-  virtual void render(sf::Int32 elapsed, sf::RenderWindow *window) = 0;
+  virtual void addWidgets() = 0;
+  virtual void hideWidgets() = 0;
 };
 }
 #endif // _CORE_SCREEN_

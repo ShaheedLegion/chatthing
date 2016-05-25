@@ -4,11 +4,11 @@
 #define CORE_VERSION_MAJOR 1
 #define CORE_VERSION_MINOR 0
 
-#include <iostream>
-#include <vector>
-#include <map>
 #include <SFML/Graphics.hpp>
 #include "core/defs.h"
+#include <iostream>
+#include <map>
+#include <vector>
 
 namespace core {
 // Easy way to print without having to muck with namespaces and endl.
@@ -32,11 +32,6 @@ private:
   std::map<std::string, sf::Texture> textures;
   std::map<std::string, sf::Font> fonts;
   int currentState;
-  int initialWidth;
-  int initialHeight;
-  float scaleX;
-  float scaleY;
-  sf::RenderWindow *window;
 
   States();
 
@@ -46,14 +41,6 @@ public:
   // Be very careful when you delete this.
   ~States();
 
-  void setWindow(sf::RenderWindow *w);
-  void resized();
-
-  float getScaleX() const { return scaleX; }
-  float getScaleY() const { return scaleY; }
-
-  void getMousePos(std::pair<float, float> &p);
-
   void addTexture(const std::string &path);
   sf::Texture &getTexture(const std::string &path);
 
@@ -62,10 +49,7 @@ public:
 
   void addScreen(Screen *screen);
 
-  void render(sf::Clock &clock);
-
   virtual void signalNextScreen() override;
-  void handleKey(sf::Keyboard::Key key);
 };
 } // namespace core
 

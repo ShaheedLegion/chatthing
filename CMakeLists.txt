@@ -8,7 +8,7 @@ set (SFML_APP_NAME "SpaceThing" CACHE STRING "Human friendly name of the app.")
 
 project("${SFML_APP_NAME}")
 
-# Try to set the SAGE_PLATFORM automagically.
+# Try to set the SFML_PLATFORM automagically.
 set(_SFML_DETECTED_PLATFORM "")
 if(ANDROID)
   message(STATUS "Setting platform to: android")
@@ -78,7 +78,7 @@ include("cmake/sfml.cmake")
 #include_directories(${OPENSSL_INCLUDE_DIR})
 
 # openal-soft (Only used on Android)
-#if(SAGE_PLATFORM STREQUAL "android")
+#if(SFML_PLATFORM STREQUAL "android")
 #  set(LIBTYPE "STATIC")
 #  add_subdirectory("third_party/openal-soft-1.16.0" "openal")
 #endif()
