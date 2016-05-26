@@ -80,7 +80,7 @@ def GatherFiles(options, path, keys):
       dirs.append(full_path)
       continue
 
-    if not file.endswith('.cpp') and not file.endswith('.c') and not file.endswith('.h') and not file.endswith('.mm'):
+    if not file.endswith('.cpp') and not file.endswith('.c') and not file.endswith('.h') and not file.endswith('.mm') and not file.endswith('.hpp'):
       continue
 
     file_key = ''
