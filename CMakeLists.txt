@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.6)
 # ------------------------------------------------------------------------------
 
 # The name of the app to build.  (More human friendly)
-set (SFML_APP_NAME "SpaceThing" CACHE STRING "Human friendly name of the app.")
+set (SFML_APP_NAME "ChatThing" CACHE STRING "Human friendly name of the app.")
 
 project("${SFML_APP_NAME}")
 
