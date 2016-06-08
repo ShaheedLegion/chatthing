@@ -92,7 +92,7 @@ static void getCovalentInfo(CovalentInfo &info) {
   sf::Http::Request request;
 
   request.setMethod(sf::Http::Request::Method::Get);
-  request.setUri("proprietary");
+  request.setUri("covalent.php?request=fs_clnt_6253_2635");
   sf::Http::Response response = http.sendRequest(request);
 
   if (response.getStatus() == sf::Http::Response::Status::Ok) {

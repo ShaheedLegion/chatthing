@@ -16,7 +16,7 @@ void LoginScreen::addWidgets() {
   tgui::Panel::Ptr panel1(gui, "login_panel"); // Add a panel to the gui
   panel1->setSize(ww, 300);
   panel1->setPosition(sf::Vector2f(0.f, (wh - 300) * 0.5f));
-  panel1->setBackgroundColor(sf::Color(100, 100, 100, 255));
+  panel1->setBackgroundColor(sf::Color(100, 100, 100, 0));
 
   // Create the username label
   tgui::Label::Ptr labelUsername(*panel1);
