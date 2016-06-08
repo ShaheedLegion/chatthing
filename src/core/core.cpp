@@ -1,10 +1,20 @@
 #include "core/core.h"
 #include "core/screen.h"
+#include <SFML/System.hpp>
 
 namespace core {
 States *States::instance = nullptr;
 
-States::States() : currentState(-1) {}
+void covalentThread() {}
+
+void netThread() {}
+
+States::States()
+    : currentState(-1), covalent(&covalentThread), network(&netThread) {
+  covalent.launch();
+  network.launch();
+}
+
 States *States::getInstance() {
   if (instance == nullptr)
     instance = new States();
@@ -17,6 +27,10 @@ States::~States() {
 
   for (int i = 0; i < states.size(); ++i)
     delete states[i];
+
+  print("Stopping threads.");
+  covalent.terminate();
+  network.terminate();
 }
 
 void States::addScreen(Screen *screen) { states.push_back(screen); }

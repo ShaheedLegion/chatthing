@@ -15,7 +15,7 @@ void LoginScreen::addWidgets() {
   // Stick everything in this UI into a panel
   tgui::Panel::Ptr panel1(gui, "login_panel"); // Add a panel to the gui
   panel1->setSize(ww, 300);
-  panel1->setPosition(sf::Vector2f(0.f, 250.f));
+  panel1->setPosition(sf::Vector2f(0.f, (wh - 300) * 0.5f));
   panel1->setBackgroundColor(sf::Color(100, 100, 100, 255));
 
   // Create the username label
@@ -50,7 +50,7 @@ void LoginScreen::addWidgets() {
   button->setCallbackId(2635);
 }
 
-// Not sure how to hide widgets at this point ...
+// Hide the parent container ...
 void LoginScreen::hideWidgets() {
   auto panel = gui.get("login_panel");
   panel->hide();
@@ -60,7 +60,7 @@ void LoginScreen::handleCallbacks() {
   // The callback loop
   tgui::Callback callback;
   while (gui.pollCallback(callback)) {
-    // Make sure tha callback comes from the button
+    // Make sure the callback comes from the button
     if (callback.id == 2635) {
       // Get the username and password
       tgui::EditBox::Ptr editBoxUsername = gui.get("Username", true);
@@ -74,7 +74,13 @@ void LoginScreen::handleCallbacks() {
       core::print(username);
       core::print(password);
 
+	  if (username.isEmpty() || password.isEmpty())
+		  return;
+
+
+
       if (username == "test" && password == "test") {
+
         helper->signalNextScreen();
       }
     }

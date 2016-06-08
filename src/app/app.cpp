@@ -6,10 +6,11 @@
 
 // Include the screens we are going to use for this game.
 #include "app/convo_screen.h"
+#include "app/covalent.hpp"
 #include "app/login_screen.h"
 
-#define W_W 1024
-#define W_H 768
+#define W_W 1920
+#define W_H 1080
 
 void loadWidgets(tgui::Gui &gui) {
   tgui::Picture::Ptr picture(gui, "background");
@@ -19,6 +20,19 @@ void loadWidgets(tgui::Gui &gui) {
 
 int main() {
   core::print("Starting up.");
+
+  // Get the covalent info immediately - we can't move without it.
+  app::CovalentInfo info;
+  app::getCovalentInfo(info);
+  if (!info.isValid) {
+    core::print("Could not contact covalent:");
+    core::print(info.msg);
+    return 1;
+  }
+
+  core::print(info.msg);
+
+  app::StartChatThread(info);
 
   // Request a 24-bits depth buffer when creating the window
   sf::ContextSettings contextSettings(24);

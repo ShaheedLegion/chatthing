@@ -6,6 +6,7 @@
 
 #include "core/defs.h"
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 #include <iostream>
 #include <map>
 #include <vector>
@@ -32,6 +33,8 @@ private:
   std::map<std::string, sf::Texture> textures;
   std::map<std::string, sf::Font> fonts;
   int currentState;
+  sf::Thread covalent;
+  sf::Thread network;
 
   States();
 

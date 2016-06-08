@@ -54,7 +54,7 @@ endif()
 
 target_link_libraries("app"
   "core"
-
+  "sfml-network"
   "sfml-graphics"
   "sfml-window"
   "sfml-system"
